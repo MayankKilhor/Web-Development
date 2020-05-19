@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>To-do List</title>
+    </head>
+    <body>
+        <h1>To-do List</h1>
+        <ul>
+            <li>"new" ->New List</li>
+            <li>"View" ->List</li>
+            <li>"delete"->Delete List</li>
+            <li>"quit" ->Exit</li>
+        </ul>
+        <script type="text/javascript">
+            var  todo=[];
+            var response=prompt("What you wanna do?? ");
+             
+            while(response!=="quit")
+            {
+                if(response==="list"){
+                    todo.forEach(function(todo, i){
+                        console.log(i + ":" + todo);
+                    });
+                }
+                else if(response==="new"){
+                    var newTodo= prompt("What you wanna add in list?");
+                    todo.push(newTodo);
+                }
+                else if(response==="delete"){
+                    var index=prompt("What Indexyou wanna remove?");
+                    todo.splice(index);
+                    console.log("Deleted");
+                }
+                response=prompt("What you wanna do?? ");
+            }
+        </script>
+    </body>
+</html> 
