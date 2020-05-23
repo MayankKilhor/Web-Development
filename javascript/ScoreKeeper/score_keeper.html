@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Score Keeper</title>
+        <style type="text/css" rel="stylesheet">
+            .winner{
+                color: green;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <h1><span id="p1Display">0</span> to <span id="p2Display">0</span></h1>
+        
+        <p>Playing to: <span>5</span></p>
+
+        <input type="number">
+        <button id="p1">Player One</bu1tton>
+        <button id="p2">Player Two</button>
+        <button id="reset">Reset</button>
+
+        <script type="text/javascript">
+            var p1Button=document.getElementById("p1");
+            var p2Button=document.getElementById("p2");
+            var resetButton=document.getElementById("reset");
+            var p1Display=document.querySelector("#p1Display");
+            var p2Display=document.querySelector("#p2Display");
+            var limitDisplay=document.querySelector("p span");
+            var NumInput=document.querySelector("input");
+            var GameOver=false;
+            var limit=5;
+            var p1Score=0;
+            var p2Score=0;
+
+            function reset(){
+                p1Score=0;
+                p2Score=0;
+                p1Display.textContent=p1Score;
+                p2Display.textContent=p2Score;
+                GameOver=false;
+               p1Display.classList.remove("winner");
+               p2Display.classList.remove("winner");
+              
+            }
+
+            NumInput.addEventListener("change",function(){
+                limitDisplay.textContent=NumInput.value;
+                limit=Number(NumInput.value);
+                reset();
+            });
+
+            p1Button.addEventListener("click",function(){
+                if(!GameOver){
+                    p1Score++;
+                    if(p1Score===limit){
+                        GameOver=true;
+                        p1Display.classList.add("winner");
+                        
+                    }
+                     p1Display.textContent=p1Score;
+                }
+               
+            });
+            
+            p2Button.addEventListener("click",function(){
+                if(!GameOver){
+                    p2Score++;
+                    if(p2Score===limit){
+                        GameOver=true;
+                        p2Display.classList.add("winner");
+                       
+                    }
+                    p2Display.textContent=p2Score;
+                }
+               
+            });
+            resetButton.addEventListener("click",function(){
+                reset();
+            });
+        </script>
+    </body>
+</html>
